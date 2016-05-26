@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Incsw\AsseticExtensionsBundle\DependencyInjection;
+namespace IncSW\AsseticExtensionsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 // Interfaces
@@ -11,7 +11,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * Class Configuration
  *
- * @package Incsw\AsseticExtensionsBundle\DependencyInjection
+ * @package IncSW\AsseticExtensionsBundle\DependencyInjection
  */
 final class Configuration implements ConfigurationInterface
 {

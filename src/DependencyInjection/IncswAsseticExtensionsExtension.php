@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Incsw\AsseticExtensionsBundle\DependencyInjection;
+namespace IncSW\AsseticExtensionsBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -11,11 +11,11 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 
 /**
- * Class IncswAsseticExtensionsExtension
+ * Class IncSWAsseticExtensionsExtension
  *
- * @package Incsw\AsseticExtensionsBundle\DependencyInjection
+ * @package IncSW\AsseticExtensionsBundle\DependencyInjection
  */
-final class IncswAsseticExtensionsExtension extends Extension
+final class IncSWAsseticExtensionsExtension extends Extension
 {
 
     /**
