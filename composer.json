@@ -6,7 +6,7 @@
         "assetic",
         "extensions"
     ],
-    "homepage": "https://github.com/Incsw/AsseticExtensionsBundle",
+    "homepage": "https://github.com/IncSW/AsseticExtensionsBundle",
     "license": "MIT",
     "authors": [
         {
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Incsw\\AsseticExtensionsBundle\\": "src/"
+            "IncSW\\AsseticExtensionsBundle\\": "src/"
         }
     }
 }

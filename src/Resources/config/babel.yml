@@ -1,6 +1,6 @@
 services:
     incsw_assetic_extensions.filter.babel:
-        class: Incsw\AsseticExtensionsBundle\Assetic\Filter\BabelFilter
+        class: IncSW\AsseticExtensionsBundle\Assetic\Filter\BabelFilter
         arguments:
             - %incsw_assetic_extensions.filter.babel.bin%
             - %assetic.node.bin%

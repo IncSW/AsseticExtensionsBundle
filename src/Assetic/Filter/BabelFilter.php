@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Incsw\AsseticExtensionsBundle\Assetic\Filter;
+namespace IncSW\AsseticExtensionsBundle\Assetic\Filter;
 
 use Assetic\Exception\FilterException;
 use Assetic\Filter\BaseNodeFilter;
@@ -13,7 +13,7 @@ use Assetic\Asset\AssetInterface;
 /**
  * Class BabelFilter
  *
- * @package Incsw\AsseticExtensionsBundle\Assetic\Filter
+ * @package IncSW\AsseticExtensionsBundle\Assetic\Filter
  */
 final class BabelFilter extends BaseNodeFilter
 {

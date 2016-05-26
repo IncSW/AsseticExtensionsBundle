@@ -2,16 +2,16 @@
 
 declare(strict_types = 1);
 
-namespace Incsw\AsseticExtensionsBundle;
+namespace IncSW\AsseticExtensionsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class IncswAsseticExtensionsBundle
+ * Class IncSWAsseticExtensionsBundle
  *
- * @package Incsw\AsseticExtensionsBundle
+ * @package IncSW\AsseticExtensionsBundle
  */
-class IncswAsseticExtensionsBundle extends Bundle
+class IncSWAsseticExtensionsBundle extends Bundle
 {
 
 }
