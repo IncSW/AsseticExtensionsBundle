@@ -13,7 +13,7 @@ use Symfony\Component\Config\Definition\Processor;
  *
  * @package Incsw\AsseticExtensionsBundle\DependencyInjection
  */
-class AppExtension extends Extension
+class IncswAsseticExtensionsExtension extends Extension
 {
 
     /**
