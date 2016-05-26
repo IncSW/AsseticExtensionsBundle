@@ -13,7 +13,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * @package Incsw\AsseticExtensionsBundle\DependencyInjection
  */
-class Configuration implements ConfigurationInterface
+final class Configuration implements ConfigurationInterface
 {
 
     /**
