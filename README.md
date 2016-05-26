@@ -1,0 +1,1 @@
+# Assetic extensions bundle
