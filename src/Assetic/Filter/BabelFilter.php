@@ -22,12 +22,6 @@ final class BabelFilter extends BaseNodeFilter
      *
      * @var string
      */
-    private $babelBin;
-
-    /**
-     *
-     * @var string|null
-     */
     private $nodeBin;
 
     /**
@@ -37,17 +31,34 @@ final class BabelFilter extends BaseNodeFilter
     private $config;
 
     /**
+     *
+     * @var string|null
+     */
+    private $executableTemplate;
+
+    /**
      * BabelFilter constructor.
      *
-     * @param string $babelBin
-     * @param string|null $nodeBin
+     * @param string $nodeBin
      * @param string|null $config
+     * @param array $nodePaths
      */
-    public function __construct(string $babelBin = '/usr/bin/babel', string $nodeBin = null, string $config = null)
+    public function __construct(string $nodeBin = '/usr/bin/node', string $config = null, array $nodePaths = [])
     {
-        $this->babelBin = $babelBin;
         $this->nodeBin = $nodeBin;
         $this->config = $config;
+        $this->setNodePaths($nodePaths);
+        $this->executableTemplate = <<<'EOF'
+const babel = require('babel-core');
+const fs = require('fs');
+
+babel.transformFile('%s', {
+    extends: '%s' || null
+}, (error, result) => {
+    error && process.exit(2);
+    fs.writeFileSync('%s', result.code);
+});
+EOF;
     }
 
     /**
@@ -61,24 +72,22 @@ final class BabelFilter extends BaseNodeFilter
      */
     public function filterLoad(AssetInterface $asset)
     {
-        $processBuilder = $this->createProcessBuilder($this->nodeBin ? [$this->nodeBin, $this->babelBin] : [$this->babelBin]);
-
-        $inputDir = FilesystemUtils::createThrowAwayDirectory('babel_in');
-        $input = tempnam($inputDir, 'assetic') . '.js';
+        $input = FilesystemUtils::createTemporaryFile('babel_in');
+        $executable = FilesystemUtils::createTemporaryFile('babel_executable');
         $output = FilesystemUtils::createTemporaryFile('babel_out');
-        if ($this->config !== null) {
-            copy($this->config, $inputDir . '/' . basename($this->config));
-        }
 
         file_put_contents($input, $asset->getContent());
-        $processBuilder->add($input)
-            ->add('--out-file')
-            ->add($output)
-        ;
+        file_put_contents($executable, sprintf($this->executableTemplate, $input, $this->config, $output));
 
+        $processBuilder = $this->createProcessBuilder([
+            $this->nodeBin,
+            $executable
+        ]);
         $process = $processBuilder->getProcess();
         $code = $process->run();
-        FilesystemUtils::removeDirectory($inputDir);
+
+        unlink($input);
+        unlink($executable);
 
         if ($code !== 0) {
             if (file_exists($output)) {

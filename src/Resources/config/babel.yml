@@ -2,11 +2,10 @@ services:
     incsw_assetic_extensions.filter.babel:
         class: IncSW\AsseticExtensionsBundle\Assetic\Filter\BabelFilter
         arguments:
-            - %incsw_assetic_extensions.filter.babel.bin%
             - %assetic.node.bin%
             - %incsw_assetic_extensions.filter.babel.config%
+            - %assetic.node.paths%
         cals:
             - [setTimeout, [null]]
-            - [setNodePaths, [%assetic.node.paths%]]
         tags:
             - { name: assetic.filter, alias: babel }

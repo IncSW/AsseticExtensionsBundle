@@ -52,7 +52,6 @@ final class Configuration implements ConfigurationInterface
         $babelNode = $treeBuilder->root('babel');
         $babelNode
             ->children()
-                ->scalarNode('bin')->end()
                 ->scalarNode('config')->end()
             ->end()
         ;

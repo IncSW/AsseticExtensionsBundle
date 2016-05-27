@@ -36,7 +36,6 @@ final class IncSWAsseticExtensionsExtension extends Extension
 
         $filters = [
             'babel' => [
-                'bin' => $container->hasParameter('assetic.filter.babel.bin') ? $container->getParameter('assetic.filter.babel.bin') : '/usr/bin/babel',
                 'config' => $container->hasParameter('assetic.filter.babel.config') ? $container->getParameter('assetic.filter.babel.config') : $container->getParameter('kernel.root_dir') . '/../.babelrc'
             ]
         ];
