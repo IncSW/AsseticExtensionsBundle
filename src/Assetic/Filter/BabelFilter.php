@@ -49,12 +49,12 @@ final class BabelFilter extends BaseNodeFilter
         $this->config = $config;
         $this->setNodePaths($nodePaths);
         $this->executableTemplate = <<<'EOF'
-const babel = require('babel-core');
-const fs = require('fs');
+var babel = require('babel-core');
+var fs = require('fs');
 
 babel.transformFile('%s', {
     extends: '%s' || null
-}, (error, result) => {
+}, function(error, result) {
     error && process.exit(2);
     fs.writeFileSync('%s', result.code);
 });
