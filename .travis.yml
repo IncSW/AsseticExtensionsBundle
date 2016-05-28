@@ -1,7 +1,5 @@
 language: php
 
-sudo: false
-
 php:
     - 7.0
 
@@ -11,8 +9,8 @@ matrix:
         - php: 7.0
 
 install:
-    - npm install n -g
-    - n 6.2
+    - sudo npm install n -g
+    - sudo n 6.2
     - npm install
     - composer install
 
