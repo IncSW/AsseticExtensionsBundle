@@ -27,7 +27,7 @@ final class BabelFilterTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->filter = new BabelFilter('node', __DIR__ . '/../../.babelrc', [__DIR__ . '/../../node_modules']);
+        $this->filter = new BabelFilter('node', __DIR__ . '/.babelrc', [__DIR__ . '/../../node_modules']);
     }
 
     /**
