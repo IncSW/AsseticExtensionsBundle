@@ -5,12 +5,11 @@ php:
 
 matrix:
     allow_failures:
-        - php: hhvm
         - php: 7.0
 
 install:
-    - sudo npm install n -g
-    - sudo n 6.2
+    - npm install n -g
+    - n 6.2
     - npm install
     - composer install
 
