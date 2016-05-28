@@ -1,8 +1,5 @@
 language: php
 
-env:
-    - TRAVIS_NODE_VERSION="6"
-
 sudo: false
 
 php:
@@ -14,8 +11,10 @@ matrix:
         - php: 7.0
 
 install:
-    - composer install
+    - npm n -g
+    - n 6.2
     - npm install
+    - composer install
 
 script:
     - bin/phpunit
