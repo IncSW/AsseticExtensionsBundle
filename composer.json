@@ -20,9 +20,18 @@
         "symfony/framework-bundle": "~3.0",
         "kriswallsmith/assetic": "~1.3"
     },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
     "autoload": {
         "psr-4": {
             "IncSW\\AsseticExtensionsBundle\\": "src/"
-        }
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
     }
 }

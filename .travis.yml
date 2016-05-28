@@ -1,0 +1,18 @@
+language: php
+
+sudo: false
+
+php:
+    - 7.0
+
+matrix:
+    allow_failures:
+        - php: hhvm
+        - php: 7.0
+
+install:
+    - composer install
+    - npm install
+
+script:
+    - bin/phpunit
