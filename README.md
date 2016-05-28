@@ -10,5 +10,13 @@ incsw_assetic_extensions:
             config: %kernel.root_dir%/../.babelrc
 ```
 
+## Examples
+### Babel filter
+````twig
+{% javascripts '@AppBundle/Resources/public/js/*' filter='babel' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+````
+
 ## License
 [MIT](https://github.com/IncSW/AsseticExtensionsBundle/blob/master/LICENSE)

@@ -50,13 +50,15 @@ final class BabelFilter extends BaseNodeFilter
         $this->setNodePaths($nodePaths);
         $this->executableTemplate = <<<'EOF'
 var babel = require('babel-core');
-var fs = require('fs');
 
 babel.transformFile('%s', {
     extends: '%s' || null
 }, function(error, result) {
-    error && process.exit(2);
-    fs.writeFileSync('%s', result.code);
+    if (error) {
+        console.log(error);
+        process.exit(2);
+    }
+    console.log(result.code);
 });
 EOF;
     }
@@ -74,10 +76,9 @@ EOF;
     {
         $input = FilesystemUtils::createTemporaryFile('babel_in');
         $executable = FilesystemUtils::createTemporaryFile('babel_executable');
-        $output = FilesystemUtils::createTemporaryFile('babel_out');
 
         file_put_contents($input, $asset->getContent());
-        file_put_contents($executable, sprintf($this->executableTemplate, $input, $this->config, $output));
+        file_put_contents($executable, sprintf($this->executableTemplate, $input, $this->config));
 
         $processBuilder = $this->createProcessBuilder([
             $this->nodeBin,
@@ -90,22 +91,12 @@ EOF;
         unlink($executable);
 
         if ($code !== 0) {
-            if (file_exists($output)) {
-                unlink($output);
-            }
             throw FilterException::fromProcess($process)
                 ->setInput($asset->getContent())
             ;
         }
 
-        if (!file_exists($output)) {
-            throw new \RuntimeException('Error creating output file.');
-        }
-
-        $compiledJs = file_get_contents($output);
-        unlink($output);
-
-        $asset->setContent($compiledJs);
+        $asset->setContent($process->getOutput());
     }
 
     /**
