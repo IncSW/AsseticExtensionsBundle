@@ -27,7 +27,7 @@ final class BabelFilterTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->filter = new BabelFilter('node', __DIR__ . '/.babelrc', [__DIR__ . '/../../node_modules']);
+        $this->filter = new BabelFilter('node', __DIR__ . '/../Resources/.babelrc', [__DIR__ . '/../../node_modules']);
     }
 
     /**
@@ -36,9 +36,9 @@ final class BabelFilterTest extends \PHPUnit_Framework_TestCase
      */
     public function testFilterLoad()
     {
-        $asset = new StringAsset(file_get_contents(__DIR__ . '/in.js'));
+        $asset = new StringAsset(file_get_contents(__DIR__ . '/../Resources/in.js'));
         $asset->load();
         $this->filter->filterLoad($asset);
-        $this->assertEquals(file_get_contents(__DIR__ . '/out.js'), $asset->getContent(), '->filterLoad() parses the content');
+        $this->assertEquals(file_get_contents(__DIR__ . '/../Resources/out.js'), $asset->getContent(), '->filterLoad() parses the content');
     }
 }
