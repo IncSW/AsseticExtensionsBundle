@@ -11,7 +11,7 @@ matrix:
         - php: 7.0
 
 install:
-    - npm n -g
+    - npm install n -g
     - n 6.2
     - npm install
     - composer install
