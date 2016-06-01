@@ -2,6 +2,8 @@
 
 [![Build Status](https://img.shields.io/travis/IncSW/AsseticExtensionsBundle/master.svg?style=flat-square)](https://travis-ci.org/IncSW/AsseticExtensionsBundle)
 
+`incsw/assetic-extensions-bundle` provides extentions for AsseticBundle in your Symfony2 Project. PHP 7.0+ required.
+
 ## Configuration
 ```yaml
 incsw_assetic_extensions:
