@@ -4,7 +4,8 @@
     "description": "Assetic extensions bundle",
     "keywords": [
         "assetic",
-        "extensions"
+        "extensions",
+        "babel"
     ],
     "homepage": "https://github.com/IncSW/AsseticExtensionsBundle",
     "license": "MIT",
