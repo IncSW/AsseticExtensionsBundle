@@ -9,7 +9,7 @@
 incsw_assetic_extensions:
     filters:
         babel:
-            config: %kernel.root_dir%/../.babelrc
+            config: '%kernel.root_dir%/../.babelrc'
 ```
 
 ## Examples
